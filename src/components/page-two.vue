@@ -1,5 +1,9 @@
+
+<style lang = 'less'>
+@import  './css.less';
+</style>
 <template>
-  <div>
+  <div class="content">
     {{content}}
   </div>
 </template>
