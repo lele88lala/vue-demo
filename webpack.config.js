@@ -2,7 +2,6 @@
 var webpack = require('webpack');
 const { VueLoaderPlugin } = require('vue-loader');
 const HtmlWebpackPlugin = require('html-webpack-plugin')
-
 module.exports = {
     entry: __dirname + "/src/main.js",//入口文件
     output: {
@@ -48,7 +47,16 @@ module.exports = {
                     }    
                 ]
                 
-            }
+            },
+            {
+                test: /\.(js|vue)$/,
+                loader: 'eslint-loader',
+                enforce: 'pre',
+                // include: [resolve('src'), resolve('test')],
+                options: {
+                  formatter: require('eslint-friendly-formatter')
+                }
+            },
         ]
     },
     resolve: {
@@ -66,9 +74,9 @@ module.exports = {
     plugins: [
         new VueLoaderPlugin(),
         new HtmlWebpackPlugin({
-            title: 'vue-demo',
-            filename: 'index.html',
-            template: 'index.html'
+            title: 'vue-demo',//生成的 html 文件 title
+            filename: 'index.html',//生成的 html
+            template: 'index.html'//模板 html
         }),
     ]
 }

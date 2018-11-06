@@ -10,10 +10,10 @@
 
 <script>
   export default {
-    data() {
+    data () {
       return {
-          content: '有谁看到了我的小熊吗？'
-      }
+        content: '有谁看到了我的小熊吗？'
+      };
     }
-  }
+  };
 </script>

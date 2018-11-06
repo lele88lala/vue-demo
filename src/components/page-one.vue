@@ -1,3 +1,4 @@
+
 <template>
   <div>
     {{content}}
@@ -6,10 +7,10 @@
 
 <script>
   export default {
-    data() {
+    data () {
       return {
-          content: '规则就是用来打破的，略略略'
-      }
+        content: '规则就是用来打破的，略略略'
+      };
     }
-  }
+  };
 </script>
