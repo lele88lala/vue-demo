@@ -1,24 +1,26 @@
 import Vue from 'vue';
 import Router from 'vue-router';
-import PageOne from '../components/page-one.vue';
-import PageTwo from '../components/page-two.vue';
+import main from '../pages/main.vue';
+
 Vue.use(Router);
 
 let routers = [
   {
-    path: '/pageOne',
-    name: 'pageOne',
-    component: PageOne
-  },
-  {
-    path: '/pageTwo',
-    name: 'pageTwo',
-    component: PageTwo
-  },
-  {
     path: '/',
-    name: 'home',
-    component: PageOne
+    name: 'main',
+    component: main,
+    children: [
+      {
+        path: '/pageTwo',
+        name: 'pageTwo',
+        component: resolve => require.ensure([], () => resolve(require('../components/page-one.vue')))
+      },
+      {
+        path: '/pageOne',
+        name: 'pageOne',
+        component: resolve => require.ensure([], () => resolve(require('../components/page-two.vue')))
+      }
+    ]
   }
 ];
 

@@ -1,11 +1,14 @@
-// 根组件 App
 <template>
   <div id="app">
+    <navbar></navbar>
     <router-view></router-view>
+    <tabbar></tabbar>
   </div>
 </template>
 
 <script>
+import navbar from '../components/nav.vue';
+import tabbar from '../components/tabbar.vue';
 export default {
   name: 'app',
   data () {
@@ -13,17 +16,9 @@ export default {
       hehe: 'hehe'
     };
   },
-  mounted () {
-    console.log(1);
-    this.$router.push({
-      name: 'main'
-    });
-  },
-  beforeDestroy () {
-
-  },
-  methods: {
-
+  components: {
+    navbar,
+    tabbar
   }
 };
 </script>
