@@ -1,30 +1,34 @@
 //webpack.config.js
 var webpack = require('webpack');
-const { VueLoaderPlugin } = require('vue-loader');
-const HtmlWebpackPlugin = require('html-webpack-plugin')
-module.exports = {
+// const { VueLoaderPlugin } = require('vue-loader');
+const HtmlWebpackPlugin = require('html-webpack-plugin');
+const vuxLoader = require('vux-loader');
+
+const webpackConfig = {
     entry: __dirname + "/src/main.js",//入口文件
     output: {
         path: __dirname + "/dist",//打包后导出文件夹
-        filename: "bundle.js"//导出的文件名
+        filename: "[name].js",//导出的文件名
+        
+        chunkFilename: '[name].chunk.js'
     },
-    module: { 
+    module: {
         rules: [
             {
                 test: /\.js$/,
                 exclude: /node_modules/,
                 loader: 'babel-loader',
                 query: {
-                    presets: ['es2015','react']
+                    presets: ['es2015', 'react']
                 }
-            },           
+            },
             {
                 test: /\.vue$/,
                 loader: 'vue-loader',
             },
             {
                 test: /\.css$/,
-                use:[
+                use: [
                     {
                         loader: 'style-loader'
                     },
@@ -44,9 +48,9 @@ module.exports = {
                     },
                     {
                         loader: 'less-loader'
-                    }    
+                    }
                 ]
-                
+
             },
             {
                 test: /\.(js|vue)$/,
@@ -54,7 +58,7 @@ module.exports = {
                 enforce: 'pre',
                 // include: [resolve('src'), resolve('test')],
                 options: {
-                  formatter: require('eslint-friendly-formatter')
+                    formatter: require('eslint-friendly-formatter')
                 }
             },
         ]
@@ -62,17 +66,21 @@ module.exports = {
     resolve: {
         alias: {
             'vue$': 'vue/dist/vue.js'
-        }
+        },
+        alias: {
+            'vue$': 'vue/dist/vue.esm.js'
+        },
+        extensions: ['*', '.js', '.vue', '.json']
     },
     devServer: {
         contentBase: "./dist",
-        stats:{colors: true},
+        stats: { colors: true },
         historyApiFallback: true,
         inline: true,
         open: true //自动打开浏览器
     },
     plugins: [
-        new VueLoaderPlugin(),
+        // new VueLoaderPlugin(),
         new HtmlWebpackPlugin({
             title: 'vue-demo',//生成的 html 文件 title
             filename: 'index.html',//生成的 html
@@ -80,3 +88,10 @@ module.exports = {
         }),
     ]
 }
+
+module.exports = vuxLoader.merge(webpackConfig, {
+    options: {},
+    plugins: [{
+      name: 'vux-ui'
+    }]
+})

@@ -10,6 +10,11 @@
 import navbar from './components/nav.vue';
 export default {
   name: 'app',
+  data () {
+    return {
+      hehe: 'hehe'
+    };
+  },
   components: {
     navbar
   }
