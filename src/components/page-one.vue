@@ -18,9 +18,9 @@
     },
     methods: {
       add () {
-        console.log(this.$parent);
-        console.log(this.$root);
-        console.log(this.$children);
+        // console.log(this.$parent);
+        // console.log(this.$root);
+        // console.log(this.$children);
       }
     }
   };

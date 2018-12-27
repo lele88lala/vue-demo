@@ -13,7 +13,8 @@ let routers = [
       {
         path: '/pageTwo',
         name: 'pageTwo',
-        component: resolve => require.ensure([], () => resolve(require('../components/page-one.vue')))
+        // component: resolve => require.ensure([], () => resolve(requir('../components/page-one.vue')))
+        component: () => import('../components/page-one.vue')
       },
       {
         path: '/pageOne',

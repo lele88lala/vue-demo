@@ -14,7 +14,6 @@ export default {
     };
   },
   mounted () {
-    console.log(1);
     this.$router.push({
       name: 'main'
     });

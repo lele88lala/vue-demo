@@ -42,7 +42,7 @@
       };
     },
     created () {
-      console.log(this.$store.state);
+      // console.log(this.$store.state);
     },
     methods: {
 
