@@ -8,7 +8,7 @@
     "dev": "webpack-dev-server --inline --progress --config webpack.config.js",
     "build": "NODE_ENV=production webpack --mode production --optimize-minimize"
   },
-  "author": "",
+  "author": "TheaFeng",
   "license": "ISC",
   "dependencies": {
     "axios": "^0.18.0",

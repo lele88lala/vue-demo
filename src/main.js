@@ -2,8 +2,9 @@ import Vue from 'vue';
 import App from './App.vue';
 import router from './router';
 import store from './store';
-import { AlertPlugin, ToastPlugin } from 'vux';
-
+import _ from 'lodash';
+// 引入lodash
+Object.defineProperty(Vue.prototype, '_.', { value: _ });
 let vues = new Vue({
   el: '#app',
   router: router,
@@ -14,5 +15,3 @@ let vues = new Vue({
 Vue.use({
   vues
 });
-Vue.use(AlertPlugin);
-Vue.use(ToastPlugin);

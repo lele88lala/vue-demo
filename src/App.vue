@@ -1,4 +1,9 @@
-// 根组件 App
+// root page
+<style lang="less">
+@import '~vux/src/styles/reset.less';
+@import '~vux/src/styles/close.less';
+@import './style/app.less';
+</style>
 <template>
   <div id="app">
     <router-view></router-view>

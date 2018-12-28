@@ -1,25 +1,28 @@
-
-<style lang = 'less'>
-@import  './css.less';
-</style>
 <template>
   <div class="content">
+    <!-- <group>
+    <cell title="title" value="value"></cell>
+  </group> -->
     <tabbar>
-      <tabbar-item>
-        <img slot="icon" >
-        <span slot="label">Wechat</span>
+      <tabbar-item selected>
+        <img slot="icon" src="../../assets/images/tk.png">
+        <span slot="label">首页</span>
       </tabbar-item>
-      <tabbar-item show-dot>
+      <tabbar-item show-dot link="pageTwo">
         <img slot="icon">
-        <span slot="label">Message</span>
+        <span slot="label">直播</span>
       </tabbar-item>
-      <tabbar-item selected link="/component/demo">
+      <tabbar-item link="pageOne">
         <img slot="icon">
-        <span slot="label">Explore</span>
+        <span slot="label">题库</span>
       </tabbar-item>
       <tabbar-item badge="2">
         <img slot="icon">
-        <span slot="label">News</span>
+        <span slot="label">社区回答</span>
+      </tabbar-item>
+      <tabbar-item badge="2">
+        <img slot="icon">
+        <span slot="label">我的</span>
       </tabbar-item>
     </tabbar>
   </div>
@@ -38,6 +41,7 @@
     },
     data () {
       return {
+        percent: 30,
         content: '有谁看到了我的小熊吗？' + this.$store.state.app.count
       };
     },
@@ -49,3 +53,4 @@
     }
   };
 </script>
+

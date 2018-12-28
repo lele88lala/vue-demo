@@ -1,23 +1,19 @@
 <template>
-  <div id="app">
-    <navbar></navbar>
+  <div>
     <router-view></router-view>
     <tabbar></tabbar>
   </div>
 </template>
 
 <script>
-import navbar from '../components/nav.vue';
-import tabbar from '../components/tabbar.vue';
+import tabbar from '../../components/tabbar/tabbar.vue';
 export default {
-  name: 'app',
   data () {
     return {
       hehe: 'hehe'
     };
   },
   components: {
-    navbar,
     tabbar
   }
 };
