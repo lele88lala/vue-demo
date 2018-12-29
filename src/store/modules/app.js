@@ -1,11 +1,15 @@
 
 const app = {
   state: {
-    count: '333'
+    headerTitle: '',
+    showHeader: false
   },
   mutations: {
-    setCount (state, count) {
-      state.count = count;
+    setHeaderTitle (state, headerTitle) {
+      state.headerTitle = headerTitle;
+    },
+    setShowHeader (state, showHeader) {
+      state.showHeader = showHeader;
     }
   }
 };

@@ -1,30 +1,19 @@
 import Vue from 'vue';
 import Router from 'vue-router';
-import main from '../pages/main/main.vue';
+import { routers } from './router';
+import store from 'store/index';
 
 Vue.use(Router);
 
-let routers = [
-  {
-    path: '/',
-    name: 'main',
-    component: main,
-    children: [
-      {
-        path: '/pageTwo',
-        name: 'pageTwo',
-        // component: resolve => require.ensure([], () => resolve(requir('../components/page-one.vue')))
-        component: () => import('../components/page-one.vue')
-      },
-      {
-        path: '/pageOne',
-        name: 'pageOne',
-        component: resolve => require.ensure([], () => resolve(require('../components/page-two.vue')))
-      }
-    ]
-  }
-];
+const route = new Router({ routes: routers });
+export default route;
 
-export default new Router({
-  routes: routers
+route.beforeEach((to, from, next) => {
+  store.commit('setHeaderTitle', to.meta.headerTitle);
+  store.commit('setShowHeader', to.meta.showHeader);
+  next({});
+});
+
+route.afterEach((to, from, next) => {
+  console.log('after', to, from);
 });

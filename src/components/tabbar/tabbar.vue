@@ -1,26 +1,24 @@
 <template>
   <div class="content">
-    <!-- <group>
-    <cell title="title" value="value"></cell>
-  </group> -->
-    <tabbar>
-      <tabbar-item selected>
-        <img slot="icon" src="../../assets/images/tk.png">
+    <div>{{$route.path}}</div>
+    <tabbar v-show="$route.path === '/' || $route.path === '/homePageNav' || $route.path === '/liveBroadcastNav' || $route.path === '/questionBankNav' || $route.path === '/communityNav' || $route.path === '/mineNav'">
+      <tabbar-item :selected="$route.path === '/homePageNav'" link="homePageNav">
+        <img slot="icon" src="~assets/images/tk.png" link="homePageNav">
         <span slot="label">首页</span>
       </tabbar-item>
-      <tabbar-item show-dot link="pageTwo">
+      <tabbar-item show-dot :selected="$route.path === '/liveBroadcastNav'" link="liveBroadcastNav">
         <img slot="icon">
         <span slot="label">直播</span>
       </tabbar-item>
-      <tabbar-item link="pageOne">
+      <tabbar-item :selected="$route.path === '/questionBankNav'" link="questionBankNav">
         <img slot="icon">
         <span slot="label">题库</span>
       </tabbar-item>
-      <tabbar-item badge="2">
+      <tabbar-item badge="2" :selected="$route.path === '/communityNav'" link="communityNav">
         <img slot="icon">
         <span slot="label">社区回答</span>
       </tabbar-item>
-      <tabbar-item badge="2">
+      <tabbar-item badge="2" :selected="$route.path === '/mineNav'" link="mineNav">
         <img slot="icon">
         <span slot="label">我的</span>
       </tabbar-item>
@@ -46,7 +44,7 @@
       };
     },
     created () {
-      // console.log(this.$store.state);
+      console.log('呵呵', this.$route.path);
     },
     methods: {
 

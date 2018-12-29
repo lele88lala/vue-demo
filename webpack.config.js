@@ -1,11 +1,14 @@
 //webpack.config.js
 var webpack = require('webpack');
-// const { VueLoaderPlugin } = require('vue-loader');
+const path = require('path');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const vuxLoader = require('vux-loader');
 const CopyWebpackPlugin = require('copy-webpack-plugin');
 const CleanWebpackPlugin = require('clean-webpack-plugin');
 const env = process.env.NODE_ENV
+function resolve (dir) {
+    return path.join(__dirname, dir);
+}
 const webpackConfig = {
     mode: env || 'development',
     devtool: '#source-map',
@@ -79,11 +82,21 @@ const webpackConfig = {
         ]
     },
     resolve: {
+        extensions: ['.js', '.vue'],
+        // alias: {
+        //     'vue$': 'vue/dist/vue.js'
+        // },
+        // vue-html-loader and css-loader translates non-root URLs to relative paths. In order to treat it like a module path, prefix it with ~:
         alias: {
-            'vue$': 'vue/dist/vue.js'
-        },
-        alias: {
-            'vue$': 'vue/dist/vue.esm.js'
+            'vue$': 'vue/dist/vue.esm.js',
+            'components': resolve('src/components'),
+            'pages': resolve('src/pages'),
+            'assets': resolve('src/assets'),
+            'styles': resolve('src/styles'),
+            'utils': resolve('src/utils'),
+            'store': resolve('src/store'),
+            'router': resolve('src/router'),
+            'src': resolve('src/')
         },
         extensions: ['*', '.js', '.vue', '.json']
     },
@@ -117,11 +130,8 @@ const webpackConfig = {
     }
         
 }
-
+//添加 vuxloader 配置
 module.exports = vuxLoader.merge(webpackConfig, {
     options: {},
-    // plugins: [{
-    //   name: 'vux-ui'
-    // }]
     plugins: ['vux-ui', 'progress-bar', 'duplicate-style', {name: 'less-theme', path: './src/vux_theme.less'}]
 })

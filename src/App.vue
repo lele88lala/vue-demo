@@ -2,8 +2,8 @@
 <style lang="less">
 @import '~vux/src/styles/reset.less';
 @import '~vux/src/styles/close.less';
-@import './style/app.less';
 </style>
+
 <template>
   <div id="app">
     <router-view></router-view>
@@ -19,6 +19,7 @@ export default {
     };
   },
   mounted () {
+    // app组件路由加载主页面
     this.$router.push({
       name: 'main'
     });
