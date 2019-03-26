@@ -6,6 +6,7 @@ module.exports = {
   parserOptions: {
     "ecmaVersion": 2017
   },
+  "globals": { "_": true },//识别 lodash 标识
   env: {
     "es6": true
   },

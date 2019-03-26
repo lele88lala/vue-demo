@@ -1,4 +1,4 @@
 {
-  "presets": ["es2015", ["env", { "targets": { "node": "current" } }]],
+  "presets": ["es2015", ["env", { "targets": { "node": "current" } }], "stage-2"],
   "plugins": ["transform-runtime","syntax-dynamic-import"]
 }
